@@ -1,0 +1,20 @@
+syntax = "proto3";
+package validate;
+
+service Validate {
+    rpc UserAgent (ValidateUserAgentRequest) returns (ValidateUserAgentResponse);
+}
+
+enum Validity {
+  Valid = 0;
+  Invalid = 1;
+  Unknown = 2;
+}
+
+message ValidateUserAgentRequest {
+    string userAgent = 1;
+}
+
+message ValidateUserAgentResponse {
+    Validity validity = 1;
+}

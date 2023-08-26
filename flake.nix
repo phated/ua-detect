@@ -42,8 +42,23 @@
 
         craneLib = (crane.mkLib pkgs).overrideToolchain rustToolchain;
 
+        # We use the `tonic::include_proto!` macro to embed our protobuf definitions so we need to create a special
+        # source filter to include .proto files in addition to usual rust/cargo source files
+        protoFilter = path: _type: builtins.match ".*proto$" path != null;
+        # We also use `include_bytes!` to embed the user agent yaml definitions so we include that with a filter
+        yamlFilter = path: _type: builtins.match ".*yaml$" path != null;
+        sourceFilter = path: type:
+          (protoFilter path type) || (yamlFilter path type) || (craneLib.filterCargoSources path type);
+
         my-crate = craneLib.buildPackage {
-          src = craneLib.cleanCargoSource (craneLib.path ./.);
+          src = pkgs.lib.cleanSourceWith {
+            src = craneLib.path ./.;
+            filter = sourceFilter;
+          };
+
+          nativeBuildInputs = [
+            pkgs.protobuf
+          ];
 
           buildInputs = [
             # Add additional build inputs here
@@ -71,6 +86,7 @@
           nativeBuildInputs = with pkgs; [
             nil
             nixpkgs-fmt
+            grpcurl
           ];
         };
       });

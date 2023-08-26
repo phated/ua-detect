@@ -1,0 +1,20 @@
+[package]
+name = "ua-detect-server"
+description = ""
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+clap = "4.4.0"
+tonic = "0.9"
+prost = "0.11"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+uaparser = "0.6.1"
+thiserror = "1.0.47"
+
+[dev-dependencies]
+fakeit = "1.1.2"
+
+[build-dependencies]
+tonic-build = "0.9"
