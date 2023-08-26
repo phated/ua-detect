@@ -150,7 +150,7 @@ async fn main() -> ExitCode {
 #[tokio::test]
 async fn test_service() -> Result<(), ServerError> {
     let service = ValidatorService::new()?;
-    for _ in 1..100 {
+    for _ in 0..100 {
         // Chrome is unknown
         let ua = fakeit::user_agent::chrome();
         println!("chrome: {ua}");
