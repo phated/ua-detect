@@ -1,5 +1,5 @@
 [package]
-name = "example"
+name = "ua-detect-server"
 description = ""
 version.workspace = true
 authors.workspace = true

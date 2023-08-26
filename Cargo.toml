@@ -2,7 +2,7 @@
 members = ["crates/*"]
 
 [workspace.package]
-name = "root"
+name = "ua-detect"
 version = "0.0.0"
 authors = ["Blaine Bublitz <blaine.bublitz@gmail.com>"]
 edition = "2021"
