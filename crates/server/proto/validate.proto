@@ -2,7 +2,13 @@ syntax = "proto3";
 package validate;
 
 service Validate {
-    rpc validateUserAgent (ValidateUserAgentRequest) returns (ValidateUserAgentResponse);
+    rpc UserAgent (ValidateUserAgentRequest) returns (ValidateUserAgentResponse);
+}
+
+enum Validity {
+  Valid = 0;
+  Invalid = 1;
+  Unknown = 2;
 }
 
 message ValidateUserAgentRequest {
@@ -10,5 +16,5 @@ message ValidateUserAgentRequest {
 }
 
 message ValidateUserAgentResponse {
-    bool isValid = 1;
+    Validity validity = 1;
 }

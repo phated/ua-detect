@@ -45,8 +45,9 @@
         # We use the `tonic::include_proto!` macro to embed our protobuf definitions so we need to create a special
         # source filter to include .proto files in addition to usual rust/cargo source files
         protoFilter = path: _type: builtins.match ".*proto$" path != null;
+        yamlFilter = path: _type: builtins.match ".*yaml$" path != null;
         sourceFilter = path: type:
-          (protoFilter path type) || (craneLib.filterCargoSources path type);
+          (protoFilter path type) || (yamlFilter path type) || (craneLib.filterCargoSources path type);
 
         my-crate = craneLib.buildPackage {
           src = pkgs.lib.cleanSourceWith {
