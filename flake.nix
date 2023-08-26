@@ -85,6 +85,7 @@
           nativeBuildInputs = with pkgs; [
             nil
             nixpkgs-fmt
+            grpcurl
           ];
         };
       });
