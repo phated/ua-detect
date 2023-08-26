@@ -1,0 +1,14 @@
+syntax = "proto3";
+package validate;
+
+service Validate {
+    rpc validateUserAgent (ValidateUserAgentRequest) returns (ValidateUserAgentResponse);
+}
+
+message ValidateUserAgentRequest {
+    string userAgent = 1;
+}
+
+message ValidateUserAgentResponse {
+    bool isValid = 1;
+}
