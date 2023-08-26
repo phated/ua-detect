@@ -1,0 +1,15 @@
+[package]
+name = "ua-detect-validate"
+description = "Protobuffer definition and Rust client library for ua-detect"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+prost.workspace = true
+tonic.workspace = true
+
+[dev-dependencies]
+
+[build-dependencies]
+tonic-build.workspace = true
