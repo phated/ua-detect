@@ -4,14 +4,11 @@ use std::process::ExitCode;
 use clap::{Arg, Command};
 use thiserror::Error;
 use tonic::{transport::Server, Request, Response, Status};
-
+use ua_detect_validate::{
+    validate_server::{Validate, ValidateServer},
+    ValidateUserAgentRequest, ValidateUserAgentResponse, Validity,
+};
 use uaparser::{Parser, UserAgentParser};
-use validate::validate_server::{Validate, ValidateServer};
-use validate::{ValidateUserAgentRequest, ValidateUserAgentResponse, Validity};
-
-mod validate {
-    tonic::include_proto!("validate");
-}
 
 #[derive(Debug, Error)]
 enum ServerError {

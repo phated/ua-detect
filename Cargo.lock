@@ -1437,8 +1437,17 @@ dependencies = [
  "thiserror",
  "tokio",
  "tonic",
- "tonic-build",
+ "ua-detect-validate",
  "uaparser",
+]
+
+[[package]]
+name = "ua-detect-validate"
+version = "0.0.0"
+dependencies = [
+ "prost",
+ "tonic",
+ "tonic-build",
 ]
 
 [[package]]
