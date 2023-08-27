@@ -18,7 +18,7 @@ enum UserAgent {
     Other(String),
 }
 
-// TODO: The ValueEnum stuff in clap doesn't allow for catch-all so we fake it
+// Using `From<String>` because the ValueEnum stuff in clap doesn't allow for catch-all so we fake it
 impl From<String> for UserAgent {
     fn from(s: String) -> Self {
         match s.to_ascii_lowercase().as_str() {
