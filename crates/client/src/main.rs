@@ -86,7 +86,7 @@ fn get_arguments() -> Result<(Uri, String), ClientError> {
 #[tokio::main]
 async fn main() -> ExitCode {
     // TODO(#4): Come up with an abstraction that could "unwrap" errors but still print the error messages we want
-    // TODO: Abstract the various Result returning functions so they return our `ClientError` types instead of hardcoding the error messages
+    // TODO(#9): Abstract the various Result returning functions so they return our `ClientError` types instead of hardcoding the error messages
     // This pyramid was needed because the rust runtime debug prints the message instead of display printing it for Result return types
     match get_arguments() {
         Ok((url, user_agent)) => match ValidateClient::connect(url).await {
