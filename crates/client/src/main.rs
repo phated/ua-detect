@@ -74,7 +74,7 @@ fn get_arguments() -> Result<(Uri, String), ClientError> {
                 fakeit::user_agent::firefox(),
                 fakeit::user_agent::safari(),
             ];
-            // TODO: The shuffle + clone are currently working around a lifetime issue that I didn't look into
+            // TODO(#8): The shuffle + clone are currently working around a lifetime issue that I didn't look into
             user_agent.shuffle(&mut rng);
             user_agent[0].clone()
         }
