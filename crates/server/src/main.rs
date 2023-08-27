@@ -47,7 +47,7 @@ impl ValidatorService {
     ///
     /// Fails if a [UserAgentParser] cannot be constructed.
     fn new() -> Result<Self, ServerError> {
-        // TODO: It would be cool if this could be done via `lazy_static` so it could only fail at compile-time
+        // TODO(#2): It would be cool if this could be done via `lazy_static` so it could only fail at compile-time
         let ua_parser = uaparser::UserAgentParser::from_bytes(include_bytes!("regexes.yaml"))?;
         Ok(Self { ua_parser })
     }
@@ -63,7 +63,7 @@ impl Validate for ValidatorService {
 
         let client = &self.ua_parser.parse(&user_agent);
 
-        // TODO: This would be so much nicer if families were enums
+        // TODO(#3): This would be so much nicer if families were enums
         let validity = if client.user_agent.family == "Safari" {
             Validity::Invalid
         } else if client.user_agent.family == "Firefox" {
@@ -114,7 +114,7 @@ fn get_address() -> Result<SocketAddr, ServerError> {
 
 #[tokio::main]
 async fn main() -> ExitCode {
-    // TODO: Come up with an abstraction that could "unwrap" errors but still print the error messages we want
+    // TODO(#4): Come up with an abstraction that could "unwrap" errors but still print the error messages we want
     // This pyramid was needed because the rust runtime debug prints the message instead of display printing it for Result return types
     match get_address() {
         Ok(addr) => match ValidatorService::new() {
