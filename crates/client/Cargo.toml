@@ -1,0 +1,17 @@
+[package]
+name = "ua-detect-client"
+description = "Client CLI for communicating with the ua-detect service"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+clap.workspace = true
+fakeit.workspace = true
+rand.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tonic.workspace = true
+ua-detect-validate.workspace = true
+
+[dev-dependencies]
